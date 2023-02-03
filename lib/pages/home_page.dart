@@ -15,6 +15,11 @@ class _HistoryPageState extends State<HistoryPage> {
         Image.asset('images/shorter.jpg',
           width: 300.0,
         ),
+        Text(
+          'A simple link but poerful tool',
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headline6
+        ),
       ],
     );
   }
