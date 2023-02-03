@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,22 @@ class MyHomePage extends StatelessWidget {
         title: Text(
           'Link Shorter'
         ),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Ionicons.home_outline),
+            label: 'Home',
+            activeIcon: Icon(Ionicons.home_outline),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Ionicons.document_attach_outline),
+            label: 'History',
+            activeIcon: Icon(Ionicons.home_outline),
+          ),
+        ],
       ),
     );
   }
