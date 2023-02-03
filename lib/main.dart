@@ -1,5 +1,8 @@
+import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'pages/history_page.dart';
+import 'pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,11 +24,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int activePageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    List <Widget> pages = [
+      MyHomePage(),
+      HistoryPage(),
+    ];
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -34,7 +46,14 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
       ),
+      body: pages[activePageIndex],
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: activePageIndex,
+        onTap: (value) {
+          setState(() {
+            activePageIndex = value;
+          });
+        },
         items: [
           BottomNavigationBarItem(
             icon: Icon(Ionicons.home_outline),
