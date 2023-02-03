@@ -10,10 +10,12 @@ class HistoryPage extends StatefulWidget {
 class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'HistoryPage',
-      ),
+    return ListView(
+      children: [
+        Image.asset('images/shorter.jpg',
+          width: 300.0,
+        ),
+      ],
     );
   }
 }
