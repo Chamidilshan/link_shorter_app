@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HistoryPage extends StatefulWidget {
+  const HistoryPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HistoryPage> createState() => _HistoryPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HistoryPageState extends State<HistoryPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'HomePage',
+        'History Page',
       ),
     );
   }

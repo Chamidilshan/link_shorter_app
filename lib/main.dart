@@ -1,5 +1,6 @@
 import 'dart:html';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'pages/history_page.dart';
 import 'pages/home_page.dart';
@@ -15,9 +16,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Link Shorter',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        backgroundColor: Colors.lightBlueAccent,
+        textTheme: GoogleFonts.poppinsTextTheme(
+          Theme.of(context).textTheme
+        )
       ),
       home:  MyHomePage(),
     );
@@ -34,8 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List <Widget> pages = [
-      MyHomePage(),
+     List <Widget> pages = [
+      HomePage(),
       HistoryPage(),
     ];
     return Scaffold(
@@ -59,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Ionicons.home_outline),
             label: 'Home',
             activeIcon: Icon(Ionicons.home_outline),
+
           ),
           BottomNavigationBarItem(
             icon: Icon(Ionicons.document_attach_outline),
