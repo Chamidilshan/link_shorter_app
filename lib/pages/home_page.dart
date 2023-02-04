@@ -9,6 +9,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final formKey = GlobalKey<FormState>();
+  final urlTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -45,7 +47,9 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Form(
+            key: formKey,
               child: TextFormField(
+                controller: urlTextController,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 keyboardType: TextInputType.url,
                 decoration: InputDecoration(
@@ -63,11 +67,11 @@ class _HomePageState extends State<HomePage> {
                   if(value!.isEmpty){
                     return 'Please enter a url';
                   }
-                  if(!value.startsWith('https://') || !value.startsWith('www.')){
+                  if(!value.startsWith('https://') && !value.startsWith('www.')){
                     return 'Please enter a valid url';
                   }
                   final urlRegex = RegExp(
-                      r'^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$'
+                      r'^(https?:\/\/)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$'
                   );
                   if (!urlRegex.hasMatch(value)){
                     return 'Please enter a valid url';
@@ -86,7 +90,17 @@ class _HomePageState extends State<HomePage> {
             right: 100.0,
           ),
           child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if(!formKey.currentState!.validate()){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text('Please enter a valid URL')
+                      ),
+                  );
+                  return;
+                }
+                print(urlTextController);
+              },
               child: Text(
                 'Short Your Link'
               ),
