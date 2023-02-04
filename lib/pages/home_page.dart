@@ -76,7 +76,29 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
           ),
-        )
+        ),
+        SizedBox(
+          height: 10.0,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 100.0,
+            right: 100.0,
+          ),
+          child: ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                'Short Your Link'
+              ),
+            style: ElevatedButton.styleFrom(
+              shape: StadiumBorder(),
+              padding: EdgeInsets.symmetric(
+                vertical: 15.0,
+                horizontal: 10.0,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
