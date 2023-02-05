@@ -44,7 +44,9 @@ class _HomePageState extends State<HomePage> {
       if (response.data['ok'] == true){
         final data = response.data;
         final shortedLink = data['full_short_link'];
-        print(data);
+        final orginalLink = data['result']['original_link'];
+        print('This is the shorted link $shortedLink');
+        print('This is the original link $orginalLink');
       }
     } catch (e) {}
   }
