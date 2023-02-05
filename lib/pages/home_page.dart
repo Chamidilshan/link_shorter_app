@@ -11,6 +11,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final formKey = GlobalKey<FormState>();
   final urlTextController = TextEditingController();
+  void shortLink(String url){
+    showDialog(context: context,
+        builder: (context){
+      return Dialog(
+        backgroundColor: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              CircularProgressIndicator.adaptive(),
+              SizedBox(
+                height: 10.0,
+              ),
+              Text(
+                'We are shorting your link'
+              ),
+            ],
+          ),
+        ),
+      );
+        }
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -100,6 +123,7 @@ class _HomePageState extends State<HomePage> {
                   return;
                 }
                 print(urlTextController);
+                shortLink(urlTextController.text);
               },
               child: Text(
                 'Short Your Link'
