@@ -12,13 +12,16 @@ class _HomePageState extends State<HomePage> {
   final formKey = GlobalKey<FormState>();
   final urlTextController = TextEditingController();
   void shortLink(String url){
-    showDialog(context: context,
+    showDialog(
+      barrierDismissible: false,
+        context: context,
         builder: (context){
       return Dialog(
         backgroundColor: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               CircularProgressIndicator.adaptive(),
               SizedBox(
