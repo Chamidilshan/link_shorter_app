@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -11,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final formKey = GlobalKey<FormState>();
   final urlTextController = TextEditingController();
-  void shortLink(String url){
+  Future<void> shortLink(String url) async {
     showDialog(
       barrierDismissible: false,
         context: context,
@@ -36,7 +37,19 @@ class _HomePageState extends State<HomePage> {
       );
         }
     );
+    try {
+      final response = await Dio().get(
+          'https://api.shrtco.de/v2/shorten?url=$url'
+      );
+      if (response.data['ok'] == true){
+        final data = response.data;
+        final shortedLink = data['full_short_link'];
+        print(data);
+      }
+    } catch (e) {}
   }
+
+
   @override
   Widget build(BuildContext context) {
     return ListView(
