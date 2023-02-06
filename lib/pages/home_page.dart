@@ -47,14 +47,27 @@ class _HomePageState extends State<HomePage> {
         final shortedLink = data['result']['full_short_link'];
         final orginalLink = data['result']['original_link'];
         copyData(shortedLink);
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(
-            'Shorted link copied to clipboard',
-        ),
-          backgroundColor: Colors.green,
-        ),
-        );
+        if(mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(
+              'Shorted link copied to clipboard',
+            ),
+              backgroundColor: Colors.green,
+            ),
+          );
+          Navigator.of(context).pop();
+        }
       }
-    } catch (e) {}
+    } catch (e) {
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(
+          'Something went wrong. Please try again',
+        ),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
 
