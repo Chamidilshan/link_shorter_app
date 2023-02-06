@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:link_shorter_app/data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -43,10 +44,15 @@ class _HomePageState extends State<HomePage> {
       );
       if (response.data['ok'] == true){
         final data = response.data;
-        final shortedLink = data['full_short_link'];
+        final shortedLink = data['result']['full_short_link'];
         final orginalLink = data['result']['original_link'];
-        print('This is the shorted link $shortedLink');
-        print('This is the original link $orginalLink');
+        copyData(shortedLink);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(
+            'Shorted link copied to clipboard',
+        ),
+          backgroundColor: Colors.green,
+        ),
+        );
       }
     } catch (e) {}
   }
