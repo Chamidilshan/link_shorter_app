@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:link_shorter_app/data.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required this.links}) : super(key: key);
+
+  final List<Link> links;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -57,6 +61,7 @@ class _HomePageState extends State<HomePage> {
           );
           Navigator.of(context).pop();
         }
+
       }
     } catch (e) {
       Navigator.of(context).pop();

@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class HistoryPage extends StatefulWidget {
-  const HistoryPage({Key? key}) : super(key: key);
+  const HistoryPage({Key? key, required this.links}) : super(key: key);
+
+  final List<Link> links;
 
   @override
   State<HistoryPage> createState() => _HistoryPageState();

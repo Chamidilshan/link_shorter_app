@@ -42,8 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
      List <Widget> pages = [
-      HomePage(),
-      HistoryPage(),
+      HomePage(links: links,),
+      HistoryPage(links: links,),
     ];
     return Scaffold(
       appBar: AppBar(
